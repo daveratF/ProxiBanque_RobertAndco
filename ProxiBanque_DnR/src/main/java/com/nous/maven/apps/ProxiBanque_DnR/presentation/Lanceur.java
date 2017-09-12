@@ -1,12 +1,12 @@
 package com.nous.maven.apps.ProxiBanque_DnR.presentation;
 
-import fr.moi.FilRouge.metier.Carte;
-import fr.moi.FilRouge.service.IserviceAuditeur;
-import fr.moi.FilRouge.service.IserviceConseiller;
-import fr.moi.FilRouge.service.IserviceGerant;
-import fr.moi.FilRouge.service.ServiceAuditeur;
-import fr.moi.FilRouge.service.ServiceConseiller;
-import fr.moi.FilRouge.service.ServiceGerant;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.Carte;
+import com.nous.maven.apps.ProxiBanque_DnR.service.IserviceAuditeur;
+import com.nous.maven.apps.ProxiBanque_DnR.service.IserviceConseiller;
+import com.nous.maven.apps.ProxiBanque_DnR.service.IserviceGerant;
+import com.nous.maven.apps.ProxiBanque_DnR.service.ServiceAuditeur;
+import com.nous.maven.apps.ProxiBanque_DnR.service.ServiceConseiller;
+import com.nous.maven.apps.ProxiBanque_DnR.service.ServiceGerant;
 
 public class Lanceur {
 
@@ -23,11 +23,8 @@ public class Lanceur {
 		isc.modificationCompte(null);
 		isc.lectureCompte(null);
 		
-		isg.visualisationTransaction(null);
 		isg.seConnecter("Patron", "azeza");
-		isa.auditerCompte(null);
-		isa.seConnecter("AUTDIT", "azaaasssssssssss");
-		
+		isa.auditerCompte();
+		isa.seConnecter("AUTDIT", "azaaasssssssssss");	
 	}
-
 }

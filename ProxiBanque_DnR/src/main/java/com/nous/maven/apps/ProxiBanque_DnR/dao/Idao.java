@@ -1,15 +1,13 @@
 package com.nous.maven.apps.ProxiBanque_DnR.dao;
 
-import fr.moi.FilRouge.metier.EmployeAuditeur;
-import fr.moi.FilRouge.metier.Carte;
-import fr.moi.FilRouge.metier.Client;
-import fr.moi.FilRouge.metier.Compte;
-import fr.moi.FilRouge.metier.EmployeGerant;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.Carte;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.Client;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.Compte;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.EmployeConseiller;
 
 public interface Idao {
 	//traces methodes
 	public void seConnecter(String login, String mdp);
-	//traces des employes
 	//Compte
 	public void creationCompte();
 	public void modificationCompte(Compte cpt);
@@ -21,20 +19,16 @@ public interface Idao {
 	//Compte-carte
 	public void creationCarte(Carte cte);
 	public void suppressionCarte(Carte cte);
-
 	//Client
 	public void creationClient();
 	public void suppressionClient(Client c);
 	public void modificationClient(Client c);
 	public void lectureClient(Client c);
-	//traces pour gerant
-	public void creationConseille(EmployeGerant eg);
-	public void suppressionConseille(EmployeGerant eg);
-	public void lireConseille(EmployeGerant eg);
-	public void modifierConseille(EmployeGerant eg);
-
-	//traces pour auditeur
-	public void auditerCompte(EmployeAuditeur a);
-	
-	
+	//Conseiller
+	public void creationConseiller();
+	public void suppressionConseiller(EmployeConseiller ec);
+	public void lireConseiller(EmployeConseiller ec);
+	public void modifierConseiller(EmployeConseiller ec);
+	//Audit
+	public void auditerCompte();
 }

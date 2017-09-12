@@ -1,6 +1,7 @@
 package com.nous.maven.apps.ProxiBanque_DnR.service;
 
-import fr.moi.FilRouge.metier.EmployeGerant;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.EmployeConseiller;
+
 /**
  * Le g�rant poss�de les m�mes traces que le conseiller (extends IserviceConseiller)
  * ainsi que certaine n�cessitant un niveau d'accr�ditation suffisant
@@ -9,5 +10,9 @@ import fr.moi.FilRouge.metier.EmployeGerant;
  */
 public interface IserviceGerant extends IserviceConseiller{
 	public void seConnecter(String login, String mdp);
-	public void visualisationTransaction(EmployeGerant eg);
+	//Conseiller
+		public void creationConseiller();
+		public void suppressionConseiller(EmployeConseiller ec);
+		public void lireConseiller(EmployeConseiller ec);
+		public void modifierConseiller(EmployeConseiller ec);
 }
