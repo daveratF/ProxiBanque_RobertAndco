@@ -10,6 +10,7 @@ import java.util.List;
  */
 public abstract class Client {
 	//attribut
+	private int idClient;
 	private String nom;
 	private String prenom;
 	private String adresse;
@@ -20,8 +21,15 @@ public abstract class Client {
 	private List<Compte> sesComptes = new ArrayList<Compte>();
 	private int plafond;
 	//getters and setters
+	
 	public String getNom() {
 		return nom;
+	}
+	public int getIdClient() {
+		return idClient;
+	}
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
 	}
 	public List<Compte> getSesComptes() {
 		return sesComptes;

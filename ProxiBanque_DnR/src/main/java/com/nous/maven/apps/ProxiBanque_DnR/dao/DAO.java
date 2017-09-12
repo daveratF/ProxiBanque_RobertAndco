@@ -62,6 +62,27 @@ public class DAO implements Idao{
 
 	@Override
 	public void suppressionCompte(Compte cpt) {
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "DELETE FROM Compte WHERE idCompte=? "; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setInt(1, cpt.getCode());
+			ps.executeUpdate();
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		System.out.println("SUPPRESSION COMPTE");
 	}
 
@@ -118,6 +139,27 @@ public class DAO implements Idao{
 
 	@Override
 	public void suppressionCarte(Carte cte) {
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "DELETE FROM Carte WHERE idCarte=? "; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setInt(1, cte.getNumero());
+			ps.executeUpdate();
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		System.out.println("SUPPRIME CARTE");
 	}
 
@@ -159,6 +201,27 @@ public class DAO implements Idao{
 
 	@Override
 	public void suppressionClient(Client c) {
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "DELETE FROM Client WHERE idClient=? "; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setInt(1, c.getIdClient());
+			ps.executeUpdate();
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		System.out.println("SUPPRIME CLIENT");
 	}
 
@@ -211,6 +274,28 @@ public class DAO implements Idao{
 
 	@Override
 	public void suppressionConseiller(EmployeConseiller ec) {
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "DELETE FROM Employe WHERE idEmploye=? "; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setInt(1, ec.getIdConseiller());
+			ps.executeUpdate();
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		System.out.println("SUPPRIME CONSEILLER");
 	}
 
