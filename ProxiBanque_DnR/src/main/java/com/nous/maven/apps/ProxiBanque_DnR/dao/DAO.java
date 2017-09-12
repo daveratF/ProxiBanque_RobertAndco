@@ -57,6 +57,8 @@ public class DAO implements Idao{
 
 	@Override
 	public void modificationCompte(Compte cpt) {
+		
+		
 		System.out.println("MODIF COMPTE");
 	}
 
@@ -227,6 +229,32 @@ public class DAO implements Idao{
 
 	@Override
 	public void modificationClient(Client c) {
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "UPDATE Client SET nom=?, prenom=?, telephone=?, adresse=?, codePostal=?, ville =? WHERE idClient=? "; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setString(1, c.getNom()); 
+			ps.setString(2, c.getPrenom());
+			ps.setInt(3, c.getTelephone());
+			ps.setString(4, c.getAdresse());
+			ps.setInt(5, c.getCodePostal());
+			ps.setString(6, c.getVille());
+			ps.executeUpdate();
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		System.out.println("VISUALISATION CLIENT");
 	}
 
@@ -301,6 +329,27 @@ public class DAO implements Idao{
 
 	@Override
 	public void modifierConseiller(EmployeConseiller ec) {
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "UPDATE Client SET nom=?, prenom=?, email=?, login=?, mdp=? WHERE id=? "; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			
+			ps.executeUpdate();
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		System.out.println("MODIF CONSEILLER");
 	}
 
