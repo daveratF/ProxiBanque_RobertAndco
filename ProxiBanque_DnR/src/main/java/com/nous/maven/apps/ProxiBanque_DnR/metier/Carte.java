@@ -5,29 +5,37 @@ package com.nous.maven.apps.ProxiBanque_DnR.metier;
  * @author moi2
  *
  */
-public class Carte {
+public abstract class Carte {
 	//attribut
-	private int numero;
+	private int idCarte;
 	private Compte sonComtpe;
 
 	
 	//getters and setters
-	public int getNumero() {
-		return numero;
-	}
-
+	
 	public Compte getSesCartes() {
 		return sonComtpe;
+	}
+
+	public int getIdCarte() {
+		return idCarte;
+	}
+
+	public void setIdCarte(int idCarte) {
+		this.idCarte = idCarte;
+	}
+
+	public Compte getSonComtpe() {
+		return sonComtpe;
+	}
+
+	public void setSonComtpe(Compte sonComtpe) {
+		this.sonComtpe = sonComtpe;
 	}
 
 	public void setSesCartes(Compte sesCartes) {
 		this.sonComtpe = sesCartes;
 	}
-
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-	
 	
 	public Carte() {
 		super();
@@ -35,6 +43,8 @@ public class Carte {
 
 	@Override
 	public String toString() {
-		return "Carte [numero=" + numero + ", sesCartes=" + sonComtpe + "]";
+		return "Carte [idCarte=" + idCarte + ", sonComtpe=" + sonComtpe + "]";
 	}
+
+	
 }

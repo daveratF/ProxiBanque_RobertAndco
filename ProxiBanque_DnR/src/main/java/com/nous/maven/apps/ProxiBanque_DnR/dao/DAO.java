@@ -4,11 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
+import com.nous.maven.apps.ProxiBanque_DnR.metier.Agence;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Carte;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Client;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Compte;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.Employe;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.EmployeConseiller;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.EmployeGerant;
 
 /**
  * La class DAO permet de discuter avec la base de donn�e
@@ -120,10 +124,10 @@ public class DAO implements Idao{
 			//3 -  se connecter à la BDD
 			Connection conn = DriverManager.getConnection(adresse,login,mdp);
 			//4 -  préparer et envoyer requete 
-			String requete = "INSERT INTO Carte (numCarte) VALUES (?) "; 
+			String requete = "INSERT INTO Carte (idCarte) VALUES (?) "; 
 
 			PreparedStatement ps = conn.prepareStatement(requete);
-			ps.setInt(1, cte.getNumero()); 
+			ps.setInt(1, cte.getIdCarte()); 
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
 			//6 -  libérer les ressources
@@ -153,7 +157,7 @@ public class DAO implements Idao{
 			//4 -  préparer et envoyer requete 
 			String requete = "DELETE FROM Carte WHERE idCarte=? "; 
 			PreparedStatement ps = conn.prepareStatement(requete);
-			ps.setInt(1, cte.getNumero());
+			ps.setInt(1, cte.getIdCarte());
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
 			//6 -  libérer les ressources
@@ -361,5 +365,65 @@ public class DAO implements Idao{
 	@Override
 	public void auditerCompte() {
 		System.out.println("AUDIT COMPTE");
+	}
+
+	@Override
+	public void attributionEmploye(Agence a, Employe e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void attributionConseiller(EmployeGerant eg, EmployeConseiller ec) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void attributionClient(Employe e, Client c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void attributionCompte(Client c, Compte cpt) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void attributionCarte(Compte cpt, Carte cte) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Employe> lesEmployes(int idEmploye) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<EmployeConseiller> sesConseillers(int idConseiller) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Client> sesClients(int idClient) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Compte> sesComtpes(int idComtpe) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Carte> sesCartes(int idCarte) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 }

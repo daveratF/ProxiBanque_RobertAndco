@@ -1,10 +1,13 @@
 package com.nous.maven.apps.ProxiBanque_DnR.service;
 
+import java.util.List;
+
 import com.nous.maven.apps.ProxiBanque_DnR.dao.DAO;
 import com.nous.maven.apps.ProxiBanque_DnR.dao.Idao;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Carte;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Client;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Compte;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.Employe;
 
 public class ServiceConseiller implements IserviceConseiller{
 	private Idao dao = new DAO();
@@ -77,5 +80,35 @@ public class ServiceConseiller implements IserviceConseiller{
 	@Override
 	public void lectureClient(Client c) {
 		dao.lectureClient(c);
+	}
+
+	@Override
+	public void attributionClient(Employe e, Client c) {
+		dao.attributionClient(e, c);
+	}
+
+	@Override
+	public void attributionCompte(Client c, Compte cpt) {
+		dao.attributionCompte(c, cpt);
+	}
+
+	@Override
+	public void attributionCarte(Compte cpt, Carte cte) {
+		dao.attributionCarte(cpt, cte);
+	}
+
+	@Override
+	public List<Client> sesClients(int idClient) {
+		return dao.sesClients(idClient);
+	}
+
+	@Override
+	public List<Compte> sesComtpes(int idComtpe) {
+		return dao.sesComtpes(idComtpe);
+	}
+
+	@Override
+	public List<Carte> sesCartes(int idCarte) {
+		return dao.sesCartes(idCarte);
 	}
 }

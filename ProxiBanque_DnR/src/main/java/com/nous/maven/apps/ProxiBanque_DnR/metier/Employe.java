@@ -8,6 +8,7 @@ package com.nous.maven.apps.ProxiBanque_DnR.metier;
  */
 public abstract class Employe {
 	//attribut
+	private int idEmploye;
 	private String nom;
 	private String prenom;
 	private String email;
@@ -19,6 +20,12 @@ public abstract class Employe {
 	
 	public String getNom() {
 		return nom;
+	}
+	public int getIdEmploye() {
+		return idEmploye;
+	}
+	public void setIdEmploye(int idEmploye) {
+		this.idEmploye = idEmploye;
 	}
 	public Agence getlAgence() {
 		return lAgence;
