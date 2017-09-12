@@ -1,11 +1,17 @@
 package com.nous.maven.apps.ProxiBanque_DnR.presentation;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+
+import com.nous.maven.apps.ProxiBanque_DnR.metier.Client;
 
 public class FenetreSwing extends JFrame{
 	private JPanel jPCG = new JPanel();
@@ -71,7 +77,31 @@ public class FenetreSwing extends JFrame{
 		jPCGCl.add(jTcodePostal);
 		jPCGCl.add(jLtelephone);
 		jPCGCl.add(jTtelephone);
+		jBValider.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Je crée une personne dans la BDD");
+				Client c = new Client(c);
+				c.setNom(jTnom.getText());
+				c.setPrenom(jTprenom.getText());
+				c.setAdresse(jTadresse.getText());
+				c.setVille(jTville.getText());
+				c.setCodePostal(Integer.parseInt(jTcodePostal.getText()));
+				c.setTelephone(Integer.parseInt(jTtelephone.getText()));
+				isp.creerClient(c);
+				jTnom.setText("");
+				jTprenom.setText("");
+				jTadresse.setText("");
+				jTville.setText("");
+				jTcodePostal.setText("");
+				jTtelephone.setText("");
+			}
+		});
+		jP1.add(jBValider);
+		jP1.setBackground(Color.cyan);
 		jPCGCl.add(jBValider);
+		jPCGCreer.add(jPCGCl);
+		
 			getContentPane().add(onglets);
 	}
 	
