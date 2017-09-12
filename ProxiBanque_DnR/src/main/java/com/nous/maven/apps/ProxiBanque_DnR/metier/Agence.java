@@ -19,6 +19,10 @@ public class Agence {
 		return numeroAgence;
 	}
 
+	public void setNumeroIdentification(String numeroIdentification) {
+		this.numeroAgence = numeroIdentification;
+	}
+	
 	public List<Employe> getEmployes() {
 		return employes;
 	}
@@ -26,20 +30,31 @@ public class Agence {
 	public void setEmployes(List<Employe> employes) {
 		this.employes = employes;
 	}
-
-	public void setNumeroIdentification(String numeroIdentification) {
-		this.numeroAgence = numeroIdentification;
-	}
-	
 	
 	public Agence(String numeroAgence) {
 		super();
 		this.numeroAgence = numeroAgence;
 	}
 
+	public String getNumeroAgence() {
+		return numeroAgence;
+	}
+
+	public void setNumeroAgence(String numeroAgence) {
+		this.numeroAgence = numeroAgence;
+	}
+
+	public String getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(String dateCreation) {
+		this.dateCreation = dateCreation;
+	}
+
 	@Override
 	public String toString() {
-		return "Agence [numeroIdentification=" + numeroAgence + "]";
+		return "Agence [numeroAgence=" + numeroAgence + ", employes=" + employes + ", dateCreation=" + dateCreation
+				+ "]";
 	}
-	
 }

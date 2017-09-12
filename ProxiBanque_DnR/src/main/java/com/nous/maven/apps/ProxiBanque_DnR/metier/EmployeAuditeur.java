@@ -9,8 +9,17 @@ package com.nous.maven.apps.ProxiBanque_DnR.metier;
 public class EmployeAuditeur extends Employe{
 	//attribut
 	private int idAuditeur;
-	
-	
-	
-	
+
+	public int getIdAuditeur() {
+		return idAuditeur;
+	}
+
+	public void setIdAuditeur(int idAuditeur) {
+		this.idAuditeur = idAuditeur;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeAuditeur [idAuditeur=" + idAuditeur + "]";
+	}
 }

@@ -15,8 +15,8 @@ public class ServiceConseiller implements IserviceConseiller{
 	}
 
 	@Override
-	public void creationCompte() {
-		dao.creationCompte();	
+	public void creationCompte(Compte cpt) {
+		dao.creationCompte(cpt);	
 	}
 
 	@Override
@@ -60,8 +60,8 @@ public class ServiceConseiller implements IserviceConseiller{
 	}
 
 	@Override
-	public void creationClient() {
-		dao.creationClient();
+	public void creationClient(Client c) {
+		dao.creationClient(c);
 	}
 
 	@Override

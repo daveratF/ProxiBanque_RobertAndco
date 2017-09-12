@@ -12,19 +12,22 @@ import java.util.List;
 public class EmployeGerant extends Employe {
 	private List<EmployeConseiller> conseillers = new ArrayList<EmployeConseiller>();
 	private int idGerant;
-
-
+	
 	public List<EmployeConseiller> getConseillers() {
 		return conseillers;
 	}
-
 	public void setConseillers(List<EmployeConseiller> conseillers) {
 		this.conseillers = conseillers;
 	}
-
-	@Override
-	public String toString() {
-		return "EmployeGerant [conseillers=" + conseillers + "]";
+	public int getIdGerant() {
+		return idGerant;
+	}
+	public void setIdGerant(int idGerant) {
+		this.idGerant = idGerant;
 	}
 	
+	@Override
+	public String toString() {
+		return "EmployeGerant [conseillers=" + conseillers + ", idGerant=" + idGerant + "]";
+	}
 }

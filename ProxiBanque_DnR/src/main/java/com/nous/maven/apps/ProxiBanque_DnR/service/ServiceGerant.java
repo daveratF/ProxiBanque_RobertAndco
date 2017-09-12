@@ -8,8 +8,8 @@ public class ServiceGerant extends ServiceConseiller implements IserviceGerant{
 	private Idao dao = new DAO();
 
 	@Override
-	public void creationConseiller() {
-		dao.creationConseiller();
+	public void creationConseiller(EmployeConseiller ec) {
+		dao.creationConseiller(ec);
 	}
 
 	@Override

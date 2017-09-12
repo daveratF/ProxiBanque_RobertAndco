@@ -68,7 +68,12 @@ public abstract class Client {
 	public void setTelephone(int telephone) {
 		this.telephone = telephone;
 	}
-		
+	public int getPlafond() {
+		return plafond;
+	}
+	public void setPlafond(int plafond) {
+		this.plafond = plafond;
+	}
 	public Client() {
 		super();
 	}
@@ -76,7 +81,6 @@ public abstract class Client {
 	public String toString() {
 		return "Client [nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", ville=" + ville
 				+ ", codePostal=" + codePostal + ", telephone=" + telephone + ", sonConseiller=" + sonConseiller
-				+ ", sesComptes=" + sesComptes + "]";
+				+ ", sesComptes=" + sesComptes + ", plafond=" + plafond + "]";
 	}
-	
 }

@@ -12,15 +12,29 @@ public class EmployeConseiller extends Employe {
 		private List<Client> clients = new ArrayList<Client>();
 		private EmployeGerant Gerant;
 		private int idConseiller;
-
 		//getters and setters
 		public List<Client> getClients() {
 			return clients;
 		}
-
 		public void setClients(List<Client> clients) {
 			this.clients = clients;
 		}
-
-
+		public EmployeGerant getGerant() {
+			return Gerant;
+		}
+		public void setGerant(EmployeGerant gerant) {
+			Gerant = gerant;
+		}
+		public int getIdConseiller() {
+			return idConseiller;
+		}
+		public void setIdConseiller(int idConseiller) {
+			this.idConseiller = idConseiller;
+		}
+		
+		@Override
+		public String toString() {
+			return "EmployeConseiller [clients=" + clients + ", Gerant=" + Gerant + ", idConseiller=" + idConseiller
+					+ "]";
+		}
 }

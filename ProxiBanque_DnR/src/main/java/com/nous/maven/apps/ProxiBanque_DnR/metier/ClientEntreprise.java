@@ -8,6 +8,17 @@ public class ClientEntreprise extends Client {
 	//attribut
 	private int idEntreprise;
 	//getters and setters
-	
-	
+
+	public int getIdEntreprise() {
+		return idEntreprise;
+	}
+
+	public void setIdEntreprise(int idEntreprise) {
+		this.idEntreprise = idEntreprise;
+	}
+
+	@Override
+	public String toString() {
+		return "ClientEntreprise [idEntreprise=" + idEntreprise + "]";
+	}
 }

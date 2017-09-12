@@ -11,7 +11,7 @@ import com.nous.maven.apps.ProxiBanque_DnR.metier.EmployeConseiller;
 public interface IserviceGerant extends IserviceConseiller{
 	public void seConnecter(String login, String mdp);
 	//Conseiller
-		public void creationConseiller();
+		public void creationConseiller(EmployeConseiller ec);
 		public void suppressionConseiller(EmployeConseiller ec);
 		public void lireConseiller(EmployeConseiller ec);
 		public void modifierConseiller(EmployeConseiller ec);
