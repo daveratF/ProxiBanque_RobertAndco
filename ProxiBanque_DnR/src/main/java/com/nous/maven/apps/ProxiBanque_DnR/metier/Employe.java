@@ -20,6 +20,12 @@ public abstract class Employe {
 	public String getNom() {
 		return nom;
 	}
+	public Agence getlAgence() {
+		return lAgence;
+	}
+	public void setlAgence(Agence lAgence) {
+		this.lAgence = lAgence;
+	}
 	public void setNom(String nom) {
 		this.nom = nom;
 	}

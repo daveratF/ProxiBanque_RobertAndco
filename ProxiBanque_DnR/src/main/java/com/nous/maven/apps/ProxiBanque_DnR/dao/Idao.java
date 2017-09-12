@@ -9,7 +9,7 @@ public interface Idao {
 	//traces methodes
 	public void seConnecter(String login, String mdp);
 	//Compte
-	public void creationCompte();
+	public void creationCompte(Compte cpt);
 	public void modificationCompte(Compte cpt);
 	public void suppressionCompte(Compte cpt);
 	public void lectureCompte(Compte cpt);
@@ -20,12 +20,12 @@ public interface Idao {
 	public void creationCarte(Carte cte);
 	public void suppressionCarte(Carte cte);
 	//Client
-	public void creationClient();
+	public void creationClient(Client c);
 	public void suppressionClient(Client c);
 	public void modificationClient(Client c);
 	public void lectureClient(Client c);
 	//Conseiller
-	public void creationConseiller();
+	public void creationConseiller(EmployeConseiller ec);
 	public void suppressionConseiller(EmployeConseiller ec);
 	public void lireConseiller(EmployeConseiller ec);
 	public void modifierConseiller(EmployeConseiller ec);

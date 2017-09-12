@@ -1,5 +1,10 @@
 package com.nous.maven.apps.ProxiBanque_DnR.dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Carte;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Client;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Compte;
@@ -18,7 +23,35 @@ public class DAO implements Idao{
 	}
 
 	@Override
-	public void creationCompte() {
+	public void creationCompte(Compte cpt) {
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "INSERT INTO Compte (numCompte, dateOuverture, solde) VALUES (?,?,?) "; 
+
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setInt(1, cpt.getCode()); 
+			ps.setString(2, cpt.getDateOuverture());
+			ps.setDouble(3, cpt.getSolde());
+			ps.executeUpdate();
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("CREATION COMPTE");
 	}
 
@@ -54,6 +87,32 @@ public class DAO implements Idao{
 	
 	@Override
 	public void creationCarte(Carte cte) {
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "INSERT INTO Carte (numCarte) VALUES (?) "; 
+
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setInt(1, cte.getNumero()); 
+			ps.executeUpdate();
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("CREATION CARTE");
 	}
 
@@ -63,7 +122,38 @@ public class DAO implements Idao{
 	}
 
 	@Override
-	public void creationClient() {
+	public void creationClient(Client c) {
+		try {
+			
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "INSERT INTO Client (nom, prenom, telephone, adresse, codePostal, ville) VALUES (?,?,?,?,?,?) "; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setString(1, c.getNom()); 
+			ps.setString(2, c.getPrenom());
+			ps.setInt(3, c.getTelephone());
+			ps.setString(4, c.getAdresse());
+			ps.setInt(5, c.getCodePostal());
+			ps.setString(6, c.getVille());
+			ps.executeUpdate();
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("CREATION CLIENT");
 	}
 
@@ -83,7 +173,39 @@ public class DAO implements Idao{
 	}
 	
 	@Override
-	public void creationConseiller() {
+	public void creationConseiller(EmployeConseiller ec) {
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			//String requete = "INSERT INTO Client (nom, prenom, email, login, mdp,agenceEmploye_Id) VALUES (?,?,?,?,?,?) "; 
+			String requete = "INSERT INTO Employe (nom, prenom, email, login, mdp) VALUES (?,?,?,?,?) "; 
+
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setString(1, ec.getNom()); 
+			ps.setString(2, ec.getPrenom());
+			ps.setString(3, ec.getEmail());
+			ps.setString(4, ec.getLogin());
+			ps.setString(5, ec.getMdp());
+			//ps.setLong(6,ec.getlAgence());
+			ps.executeUpdate();
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("CREATION CONSEILLER");
 	}
 
