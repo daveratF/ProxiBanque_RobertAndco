@@ -1,5 +1,6 @@
 package com.nous.maven.apps.ProxiBanque_DnR.presentation;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Carte;
@@ -134,7 +137,7 @@ public class FenetreSwing extends JFrame{
 		private JLabel jLprenomc2 = new JLabel("prenom");
 		private JLabel jLemail2 = new JLabel("email");
 		private JLabel jLlogin2 = new JLabel("login");
-		private JLabel jLmdp2 = new JLabel("Mot-de-Passe");
+		private JLabel jLmdp2 = new JLabel("Mot de passe");
 		private JTextField jTnomc2 = new JTextField(12);
 		private JTextField jTprenomc2 = new JTextField(12);
 		private JTextField jTemail2 = new JTextField(12);
@@ -142,9 +145,9 @@ public class FenetreSwing extends JFrame{
 		private JTextField jTmdp2 = new JTextField(12);
 		private JButton jBModifc = new JButton("Valider Modification");
 	
-	private IserviceConseiller isc = new ServiceConseiller();
-	private IserviceGerant isg = new ServiceGerant();
-	
+		private IserviceConseiller isc = new ServiceConseiller();
+		private IserviceGerant isg = new ServiceGerant();
+		
 	public FenetreSwing() {
 		setTitle("PROXI-BANQUE");
 		setSize(800, 600);
@@ -337,7 +340,7 @@ public class FenetreSwing extends JFrame{
 			}
 		});
 		Cl3.add(jBModif);
-		
+
 		//Onglet CG
 		JTabbedPane CG = new JTabbedPane();
 		CG.addTab("Creer", Creer);
