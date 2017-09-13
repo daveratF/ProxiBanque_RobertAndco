@@ -342,7 +342,7 @@ public class DAO implements Idao{
 			//3 -  se connecter à la BDD
 			Connection conn = DriverManager.getConnection(adresse,login,mdp);
 			//4 -  préparer et envoyer requete 
-			String requete = "UPDATE Client SET nom=?, prenom=?, email=?, login=?, mdp=? WHERE id=? "; 
+			String requete = "UPDATE Employe SET nom=?, prenom=?, email=?, login=?, mdp=? WHERE idEmploye=? "; 
 			PreparedStatement ps = conn.prepareStatement(requete);
 			ps.setString(1, ec.getNom()); 
 			ps.setString(2, ec.getPrenom());
