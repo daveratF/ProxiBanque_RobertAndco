@@ -92,12 +92,14 @@ public class FenetreSwing extends JFrame{
 	private JTextField jTidCte= new JTextField(12);
 	private JButton jBSuppr3 = new JButton("Supprimer Carte");
 	//Modification Client
+	private JLabel jLidCl3 = new JLabel("Id Client");
 	private JLabel jLnom3 = new JLabel("nom");
 	private JLabel jLprenom3 = new JLabel("prenom");
 	private JLabel jLadresse3 = new JLabel("adresse");
 	private JLabel jLville3 = new JLabel("ville");
 	private JLabel jLcodePostal3 = new JLabel("codePostal");
 	private JLabel jLtelephone3 = new JLabel("telephone");
+	private JTextField jTidCl3 = new JTextField(12);
 	private JTextField jTnom3 = new JTextField(12);
 	private JTextField jTprenom3= new JTextField(12);
 	private JTextField jTadresse3 = new JTextField(12);
@@ -292,6 +294,8 @@ public class FenetreSwing extends JFrame{
 		JTabbedPane Modifier = new JTabbedPane();
 		Modifier.addTab("Client", Cl3);
 			//Modification Client
+		Cl3.add(jLidCl3);
+		Cl3.add(jTidCl3);
 		Cl3.add(jLnom3);
 		Cl3.add(jTnom3);
 		Cl3.add(jLprenom3);
@@ -309,21 +313,23 @@ public class FenetreSwing extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je crée un client dans la BDD");
 				Client cp = new ClientParticulier();
-				Client ce = new ClientEntreprise();
+				//Client ce = new ClientEntreprise();
+				cp.setIdClient(Integer.parseInt(jTidCl3.getText()));
 				cp.setNom(jTnom3.getText());
 				cp.setPrenom(jTprenom3.getText());
 				cp.setAdresse(jTadresse3.getText());
 				cp.setVille(jTville3.getText());
 				cp.setCodePostal(jTcodePostal3.getText());
 				cp.setTelephone(Integer.parseInt(jTtelephone3.getText()));
-				ce.setNom(jTnom3.getText());
-				ce.setPrenom(jTprenom3.getText());
-				ce.setAdresse(jTadresse3.getText());
-				ce.setVille(jTville3.getText());
-				ce.setCodePostal(jTcodePostal3.getText());
-				ce.setTelephone(Integer.parseInt(jTtelephone3.getText()));
+				//ce.setNom(jTnom3.getText());
+				//ce.setPrenom(jTprenom3.getText());
+				//ce.setAdresse(jTadresse3.getText());
+				//ce.setVille(jTville3.getText());
+				//ce.setCodePostal(jTcodePostal3.getText());
+				//ce.setTelephone(Integer.parseInt(jTtelephone3.getText()));
 				isc.creationClient(cp);
-				isc.creationClient(ce);
+			//	isc.creationClient(ce);
+				jTidCl3.setText("");
 				jTnom3.setText("");
 				jTprenom3.setText("");
 				jTadresse3.setText("");
