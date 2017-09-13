@@ -22,11 +22,7 @@ public class ServiceGerant extends ServiceConseiller implements IserviceGerant{
 		dao.suppressionConseiller(ec);
 	}
 
-	@Override
-	public void lireConseiller(EmployeConseiller ec) {
-		dao.lireConseiller(ec);
-	}
-
+	
 	@Override
 	public void modifierConseiller(EmployeConseiller ec) {
 		dao.modifierConseiller(ec);
@@ -50,5 +46,10 @@ public class ServiceGerant extends ServiceConseiller implements IserviceGerant{
 	@Override
 	public List<EmployeConseiller> sesConseillers(int idConseiller) {
 		return dao.sesConseillers(idConseiller);
+	}
+
+	@Override
+	public List<EmployeConseiller> lectureConseiller() {
+		return dao.lectureConseiller();
 	}
 }

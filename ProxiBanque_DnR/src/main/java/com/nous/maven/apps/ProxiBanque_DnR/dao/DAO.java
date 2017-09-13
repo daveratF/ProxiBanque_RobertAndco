@@ -93,11 +93,6 @@ public class DAO implements Idao{
 	}
 
 	@Override
-	public void lectureCompte(Compte cpt) {
-		System.out.println("VISUALISATION COMPTE");	
-	}
-
-	@Override
 	public void virementCompte(Compte cpt) {
 		System.out.println("VIREMENT");
 	}
@@ -261,11 +256,6 @@ public class DAO implements Idao{
 		}
 		System.out.println("VISUALISATION CLIENT");
 	}
-
-	@Override
-	public void lectureClient(Client c) {
-		System.out.println("Lecture CLIENT");
-	}
 	
 	@Override
 	public void creationConseiller(EmployeConseiller ec) {
@@ -345,7 +335,11 @@ public class DAO implements Idao{
 			//4 -  préparer et envoyer requete 
 			String requete = "UPDATE Client SET nom=?, prenom=?, email=?, login=?, mdp=? WHERE id=? "; 
 			PreparedStatement ps = conn.prepareStatement(requete);
-			
+			ps.setString(1, ec.getNom()); 
+			ps.setString(2, ec.getPrenom());
+			ps.setString(3, ec.getEmail());
+			ps.setString(4, ec.getLogin());
+			ps.setString(5, ec.getMdp());
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
 			//6 -  libérer les ressources
@@ -355,11 +349,6 @@ public class DAO implements Idao{
 			e.printStackTrace();
 		}
 		System.out.println("MODIF CONSEILLER");
-	}
-
-	@Override
-	public void lireConseiller(EmployeConseiller ec) {
-		System.out.println("VISUALISATION CONSEILLER");
 	}
 
 	@Override
@@ -424,6 +413,21 @@ public class DAO implements Idao{
 	@Override
 	public List<Carte> sesCartes(int idCarte) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Compte> lectureCompte() {
+		return null;
+	}
+
+	@Override
+	public List<Client> lectureClient() {
+		return null;
+	}
+
+	@Override
+	public List<EmployeConseiller> lectureConseiller() {
 		return null;
 	}	
 }

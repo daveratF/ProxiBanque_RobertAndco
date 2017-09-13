@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 12 Septembre 2017 à 21:36
+-- Généré le :  Mer 13 Septembre 2017 à 10:22
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -31,7 +31,14 @@ CREATE TABLE IF NOT EXISTS `agence` (
   `numAgence` varchar(32) NOT NULL,
   `dateCreation` date NOT NULL,
   PRIMARY KEY (`idAgence`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `agence`
+--
+
+INSERT INTO `agence` (`idAgence`, `numAgence`, `dateCreation`) VALUES
+(1, 'zerze', '2017-09-03');
 
 -- --------------------------------------------------------
 
@@ -42,12 +49,19 @@ CREATE TABLE IF NOT EXISTS `agence` (
 CREATE TABLE IF NOT EXISTS `carte` (
   `idCarte` int(11) NOT NULL AUTO_INCREMENT,
   `numCarte` int(11) NOT NULL,
-  `compte_Id` int(11) NOT NULL,
+  `compte_Id` int(11) DEFAULT NULL,
   `idPremier` int(11) DEFAULT NULL,
   PRIMARY KEY (`idCarte`),
   KEY `fk_compte_idCompte` (`compte_Id`),
   KEY `fk_carte_premier` (`idPremier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `carte`
+--
+
+INSERT INTO `carte` (`idCarte`, `numCarte`, `compte_Id`, `idPremier`) VALUES
+(1, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -69,7 +83,14 @@ CREATE TABLE IF NOT EXISTS `client` (
   PRIMARY KEY (`idClient`),
   KEY `fk_conseillerClient_idEmploye` (`conseillerClient_Id`),
   KEY `fk_employe_particulier` (`idParticulier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `client`
+--
+
+INSERT INTO `client` (`idClient`, `nom`, `prenom`, `telephone`, `adresse`, `ville`, `codePostal`, `plafond`, `conseillerClient_Id`, `idParticulier`) VALUES
+(1, 'zert', 'trz', 18, 'ttttt', 'tttt', 'tttt', '96', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -89,7 +110,14 @@ CREATE TABLE IF NOT EXISTS `compte` (
   PRIMARY KEY (`idCompte`),
   KEY `fk_compteClient_idClient` (`compteClient_Id`),
   KEY `fk_compte_epargne` (`idEpargne`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `compte`
+--
+
+INSERT INTO `compte` (`idCompte`, `numCompte`, `dateOuverture`, `decouvert`, `taux`, `compteClient_Id`, `solde`, `idEpargne`) VALUES
+(1, 'kjh,gfd', '2017-09-03', '75', '78', 1, '5555', 1);
 
 -- --------------------------------------------------------
 
@@ -109,7 +137,14 @@ CREATE TABLE IF NOT EXISTS `employe` (
   PRIMARY KEY (`idEmploye`),
   KEY `fk_agenceEmploye_idAgence` (`agenceEmploye_Id`),
   KEY `fk_employe_gerant` (`idGerant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `employe`
+--
+
+INSERT INTO `employe` (`idEmploye`, `nom`, `prenom`, `email`, `login`, `mdp`, `agenceEmploye_Id`, `idGerant`) VALUES
+(1, 'zer', 'zer', 'zer', 'zer', 'ezr', 1, 1);
 
 --
 -- Contraintes pour les tables exportées
@@ -120,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `employe` (
 --
 ALTER TABLE `carte`
   ADD CONSTRAINT `fk_carte_premier` FOREIGN KEY (`idPremier`) REFERENCES `carte` (`idCarte`),
-  ADD CONSTRAINT `fk_compte_idCompte` FOREIGN KEY (`compte_Id`) REFERENCES `compte` (`idCompte`);
+  ADD CONSTRAINT `fk_compte_idCompte` FOREIGN KEY (`compte_Id`) REFERENCES `compte` (`idCompte`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `client`
@@ -134,7 +169,7 @@ ALTER TABLE `client`
 --
 ALTER TABLE `compte`
   ADD CONSTRAINT `fk_compte_epargne` FOREIGN KEY (`idEpargne`) REFERENCES `compte` (`idCompte`),
-  ADD CONSTRAINT `fk_compteClient_idClient` FOREIGN KEY (`compteClient_Id`) REFERENCES `client` (`idClient`);
+  ADD CONSTRAINT `fk_compteClient_idClient` FOREIGN KEY (`compteClient_Id`) REFERENCES `client` (`idClient`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `employe`

@@ -32,11 +32,7 @@ public class ServiceConseiller implements IserviceConseiller{
 		dao.suppressionCompte(cpt);		
 	}
 
-	@Override
-	public void lectureCompte(Compte cpt) {
-		dao.lectureCompte(cpt);		
-	}
-
+	
 	@Override
 	public void virementCompte(Compte cpt) {
 		dao.virementCompte(cpt);		
@@ -77,10 +73,7 @@ public class ServiceConseiller implements IserviceConseiller{
 		dao.modificationClient(c);
 	}
 
-	@Override
-	public void lectureClient(Client c) {
-		dao.lectureClient(c);
-	}
+	
 
 	@Override
 	public void attributionClient(Employe e, Client c) {
@@ -110,5 +103,15 @@ public class ServiceConseiller implements IserviceConseiller{
 	@Override
 	public List<Carte> sesCartes(int idCarte) {
 		return dao.sesCartes(idCarte);
+	}
+
+	@Override
+	public List<Compte> lectureCompte() {
+		return dao.lectureCompte();
+	}
+
+	@Override
+	public List<Client> lectureClient() {
+		return dao.lectureClient();
 	}
 }
