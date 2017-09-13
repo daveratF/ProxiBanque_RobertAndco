@@ -88,7 +88,7 @@ public class FenetreSwing extends JFrame{
 	private JTextField jTidCpt= new JTextField(12);
 	private JButton jBSuppr2 = new JButton("Supprimer Compte");
 	//Supprimer Carte
-	private JLabel jLidCte = new JLabel("Numéro de Carte");
+	private JLabel jLidCte = new JLabel("id Carte");
 	private JTextField jTidCte= new JTextField(12);
 	private JButton jBSuppr3 = new JButton("Supprimer Carte");
 	//Modification Client
@@ -162,7 +162,7 @@ public class FenetreSwing extends JFrame{
 		Creer.addTab("Client", Cl);
 		Creer.addTab("Compte", Cpt);
 		Creer.addTab("Carte", Cte);
-			//Creation Client
+		//Creation Client
 		Cl.add(jLnom);
 		Cl.add(jTnom);
 		Cl.add(jLprenom);

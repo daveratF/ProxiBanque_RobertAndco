@@ -253,6 +253,8 @@ public class DAO implements Idao{
 			ps.setString(4, c.getAdresse());
 			ps.setString(5, c.getCodePostal());
 			ps.setString(6, c.getVille());
+			ps.setInt(7, c.getIdClient());
+
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
 			//6 -  libérer les ressources
@@ -347,6 +349,8 @@ public class DAO implements Idao{
 			ps.setString(3, ec.getEmail());
 			ps.setString(4, ec.getLogin());
 			ps.setString(5, ec.getMdp());
+			ps.setInt(6, ec.getIdConseiller());
+
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
 			//6 -  libérer les ressources
