@@ -18,7 +18,7 @@ public interface IserviceConseiller {
 		//Compte
 		public void creationCompte(Compte cpt);
 		public void modificationCompte(Compte cpt);
-		public void suppressionCompte(Compte cpt);
+		public void suppressionCompte(int idCompte);
 		public List<Compte> lectureCompte();
 		public void virementCompte(Compte cpt);
 		public void patrimoineCompte(Compte cpt);
@@ -28,7 +28,7 @@ public interface IserviceConseiller {
 		public void suppressionCarte(int idCarte);
 		//Client
 		public void creationClient(Client c);
-		public void suppressionClient(Client c);
+		public void suppressionClient(int idClient);
 		public void modificationClient(Client c);
 		public List<Client> lectureClient();
 		public void attributionClient(Employe e, Client c);

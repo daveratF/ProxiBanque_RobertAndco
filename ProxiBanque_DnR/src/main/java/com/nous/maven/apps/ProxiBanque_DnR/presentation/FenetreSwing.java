@@ -257,10 +257,7 @@ public class FenetreSwing extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je supprime un client de la BDD");
-				Client cp = new ClientParticulier();
-				Client ce = new ClientEntreprise();
-				isc.suppressionClient(cp);
-				isc.suppressionClient(ce);
+				isc.suppressionClient(Integer.parseInt(jTidCl.getText()));
 				jTidCl.setText("");
 			}
 		});
@@ -272,10 +269,7 @@ public class FenetreSwing extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je supprime un compte de la BDD");
-				Compte cc = new CompteCourant();
-				Compte ce = new CompteEpargne();
-				isc.suppressionCompte(cc);
-				isc.suppressionCompte(ce);
+				isc.suppressionCompte(Integer.parseInt(jTidCpt.getText()));
 				jTidCpt.setText("");
 			}
 		});
@@ -393,7 +387,7 @@ public class FenetreSwing extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					System.out.println("Je supprime un conseiller de la BDD");
 					EmployeConseiller c = new EmployeConseiller();
-					isg.suppressionConseiller(c);
+					isg.suppressionConseiller(Integer.parseInt(jTidCsr.getText()));
 					jTidCsr.setText("");
 				}
 			});

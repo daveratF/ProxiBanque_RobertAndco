@@ -74,7 +74,7 @@ public class DAO implements Idao{
 	}
 
 	@Override
-	public void suppressionCompte(Compte cpt) {
+	public void suppressionCompte(int idCompte) {
 		try {
 			//1 -  charger le pilote
 			Class.forName("com.mysql.jdbc.Driver");
@@ -87,7 +87,7 @@ public class DAO implements Idao{
 			//4 -  préparer et envoyer requete 
 			String requete = "DELETE FROM Compte WHERE idCompte=? "; 
 			PreparedStatement ps = conn.prepareStatement(requete);
-			ps.setInt(1, cpt.getCode());
+			ps.setInt(1, idCompte);
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
 			//6 -  libérer les ressources
@@ -208,7 +208,7 @@ public class DAO implements Idao{
 	}
 
 	@Override
-	public void suppressionClient(Client c) {
+	public void suppressionClient(int idClient) {
 		try {
 			//1 -  charger le pilote
 			Class.forName("com.mysql.jdbc.Driver");
@@ -221,7 +221,7 @@ public class DAO implements Idao{
 			//4 -  préparer et envoyer requete 
 			String requete = "DELETE FROM Client WHERE idClient=? "; 
 			PreparedStatement ps = conn.prepareStatement(requete);
-			ps.setInt(1, c.getIdClient());
+			ps.setInt(1, idClient);
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
 			//6 -  libérer les ressources
@@ -302,7 +302,7 @@ public class DAO implements Idao{
 	}
 
 	@Override
-	public void suppressionConseiller(EmployeConseiller ec) {
+	public void suppressionConseiller(int idConseiller) {
 		try {
 			//1 -  charger le pilote
 			Class.forName("com.mysql.jdbc.Driver");
@@ -315,7 +315,7 @@ public class DAO implements Idao{
 			//4 -  préparer et envoyer requete 
 			String requete = "DELETE FROM Employe WHERE idEmploye=? "; 
 			PreparedStatement ps = conn.prepareStatement(requete);
-			ps.setInt(1, ec.getIdConseiller());
+			ps.setInt(1, idConseiller);
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
 			//6 -  libérer les ressources

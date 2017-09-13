@@ -12,6 +12,7 @@ import java.util.List;
  */
 public abstract class Compte {
 	//attribut
+	private int idCompte;
 	private double solde;
 	private int code;
 	private String dateOuverture;
@@ -22,6 +23,14 @@ public abstract class Compte {
 		return solde;
 	}
 	
+	public int getIdCompte() {
+		return idCompte;
+	}
+
+	public void setIdCompte(int idCompte) {
+		this.idCompte = idCompte;
+	}
+
 	public List<Carte> getSesCartes() {
 		return sesCartes;
 	}

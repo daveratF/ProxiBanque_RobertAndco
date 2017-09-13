@@ -18,8 +18,8 @@ public class ServiceGerant extends ServiceConseiller implements IserviceGerant{
 	}
 
 	@Override
-	public void suppressionConseiller(EmployeConseiller ec) {
-		dao.suppressionConseiller(ec);
+	public void suppressionConseiller(int idConseiller) {
+		dao.suppressionConseiller(idConseiller);
 	}
 
 	

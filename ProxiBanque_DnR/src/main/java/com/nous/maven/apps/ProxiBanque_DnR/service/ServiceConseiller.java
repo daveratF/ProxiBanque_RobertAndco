@@ -28,8 +28,8 @@ public class ServiceConseiller implements IserviceConseiller{
 	}
 
 	@Override
-	public void suppressionCompte(Compte cpt) {
-		dao.suppressionCompte(cpt);		
+	public void suppressionCompte(int idCompte) {
+		dao.suppressionCompte(idCompte);		
 	}
 
 	
@@ -64,8 +64,8 @@ public class ServiceConseiller implements IserviceConseiller{
 	}
 
 	@Override
-	public void suppressionClient(Client c) {
-		dao.suppressionClient(c);
+	public void suppressionClient(int idClient) {
+		dao.suppressionClient(idClient);
 	}
 
 	@Override

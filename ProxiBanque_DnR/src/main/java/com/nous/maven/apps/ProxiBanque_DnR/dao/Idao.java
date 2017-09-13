@@ -17,7 +17,7 @@ public interface Idao {
 	//Compte
 	public void creationCompte(Compte cpt);
 	public void modificationCompte(Compte cpt);
-	public void suppressionCompte(Compte cpt);
+	public void suppressionCompte(int idCompte);
 	public List<Compte> lectureCompte();
 	public void virementCompte(Compte cpt);
 	public void patrimoineCompte(Compte cpt);
@@ -27,12 +27,12 @@ public interface Idao {
 	public void suppressionCarte(int idCarte);
 	//Client
 	public void creationClient(Client c);
-	public void suppressionClient(Client c);
+	public void suppressionClient(int idCLient);
 	public void modificationClient(Client c);
 	public List<Client> lectureClient();
 	//Conseiller
 	public void creationConseiller(EmployeConseiller ec);
-	public void suppressionConseiller(EmployeConseiller ec);
+	public void suppressionConseiller(int idConseiller);
 	public List<EmployeConseiller> lectureConseiller();
 	public void modifierConseiller(EmployeConseiller ec);
 	//gerant
