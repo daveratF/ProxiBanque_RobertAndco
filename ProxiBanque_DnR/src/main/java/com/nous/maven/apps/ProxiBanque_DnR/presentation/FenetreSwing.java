@@ -397,7 +397,7 @@ public class FenetreSwing extends JFrame{
 		//Onglet Modifier
 		JTabbedPane Modifierc = new JTabbedPane();
 		Modifierc.addTab("Conseiller", Csr3); 
-			//Modifier Conseiller qvdzv
+			//Modifier Conseiller
 		Csr3.add(jLidc2);
 		Csr3.add(jTidc2);
 		Csr3.add(jLnomc2);
