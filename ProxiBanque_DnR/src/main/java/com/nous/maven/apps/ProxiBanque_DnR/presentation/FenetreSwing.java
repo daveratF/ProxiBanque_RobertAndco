@@ -106,7 +106,7 @@ public class FenetreSwing extends JFrame{
 	private JTextField jTtelephone3 = new JTextField(12);
 	private JButton jBModif = new JButton("Valider Modification");
 	//Onglets G
-			//Creer dvzo,p
+			//Creer
 		private JPanel Creerc = new JPanel();
 		private JPanel Modifierc = new JPanel();
 		private JPanel Lirec = new JPanel();
