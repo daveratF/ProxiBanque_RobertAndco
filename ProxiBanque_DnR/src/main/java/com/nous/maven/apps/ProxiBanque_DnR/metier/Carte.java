@@ -8,13 +8,23 @@ package com.nous.maven.apps.ProxiBanque_DnR.metier;
 public abstract class Carte {
 	//attribut
 	private int idCarte;
+	private int numeroCarte;
 	private Compte sonComtpe;
 
 	
 	//getters and setters
 	
+	
 	public Compte getSesCartes() {
 		return sonComtpe;
+	}
+
+	public int getNumeroCarte() {
+		return numeroCarte;
+	}
+
+	public void setNumeroCarte(int numeroCarte) {
+		this.numeroCarte = numeroCarte;
 	}
 
 	public int getIdCarte() {

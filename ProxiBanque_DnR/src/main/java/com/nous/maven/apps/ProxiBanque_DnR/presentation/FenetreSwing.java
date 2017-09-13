@@ -236,11 +236,11 @@ public class FenetreSwing extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je crée une carte dans la BDD");
 				Carte cp = new CarteVisaPremier();
-				Carte ce = new CarteVisaElectron();
-				cp.setIdCarte(Integer.parseInt(jTnumCarte.getText()));
-				ce.setIdCarte(Integer.parseInt(jTnumCarte.getText()));
+				//Carte ce = new CarteVisaElectron();
+				cp.setNumeroCarte(Integer.parseInt(jTnumCarte.getText()));
+				//ce.setNumeroCarte(Integer.parseInt(jTnumCarte.getText()));
 				isc.creationCarte(cp);
-				isc.creationCarte(ce);
+				//isc.creationCarte(ce);
 				jTnumCarte.setText("");
 			}
 		});
@@ -288,9 +288,9 @@ public class FenetreSwing extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je supprime une carte de la BDD");
 				Carte cp = new CarteVisaPremier();
-				Carte ce = new CarteVisaElectron();
+				//Carte ce = new CarteVisaElectron();
 				isc.suppressionCarte(cp);
-				isc.suppressionCarte(ce);
+				//isc.suppressionCarte(ce);
 				jTidCte.setText("");
 			}
 		});

@@ -126,10 +126,10 @@ public class DAO implements Idao{
 			//3 -  se connecter à la BDD
 			Connection conn = DriverManager.getConnection(adresse,login,mdp);
 			//4 -  préparer et envoyer requete 
-			String requete = "INSERT INTO Carte (idCarte) VALUES (?) "; 
+			String requete = "INSERT INTO Carte (numCarte) VALUES (?) "; 
 
 			PreparedStatement ps = conn.prepareStatement(requete);
-			ps.setInt(1, cte.getIdCarte()); 
+			ps.setInt(1, cte.getNumeroCarte()); 
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
 			//6 -  libérer les ressources
