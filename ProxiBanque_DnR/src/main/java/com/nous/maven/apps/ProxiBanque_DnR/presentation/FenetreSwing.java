@@ -183,13 +183,13 @@ public class FenetreSwing extends JFrame{
 				cp.setPrenom(jTprenom.getText());
 				cp.setAdresse(jTadresse.getText());
 				cp.setVille(jTville.getText());
-				cp.setCodePostal(Integer.parseInt(jTcodePostal.getText()));
+				cp.setCodePostal(jTcodePostal.getText());
 				cp.setTelephone(Integer.parseInt(jTtelephone.getText()));
 				ce.setNom(jTnom.getText());
 				ce.setPrenom(jTprenom.getText());
 				ce.setAdresse(jTadresse.getText());
 				ce.setVille(jTville.getText());
-				ce.setCodePostal(Integer.parseInt(jTcodePostal.getText()));
+				ce.setCodePostal(jTcodePostal.getText());
 				ce.setTelephone(Integer.parseInt(jTtelephone.getText()));
 				isc.creationClient(cp);
 				isc.creationClient(ce);
@@ -213,8 +213,8 @@ public class FenetreSwing extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je crée un compte dans la BDD");
-				Compte cc = new CompteCourant(1000);
-				Compte ce = new CompteEpargne(0.03);
+				Compte cc = new CompteCourant();
+				Compte ce = new CompteEpargne();
 				cc.setSolde(Integer.parseInt(jTsolde.getText()));
 				cc.setCode(Integer.parseInt(jTcode.getText()));
 				cc.setDateOuverture(jTdateOuverture.getText());
@@ -272,8 +272,8 @@ public class FenetreSwing extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je supprime un compte de la BDD");
-				Compte cc = new CompteCourant(1000);
-				Compte ce = new CompteEpargne(0.03);
+				Compte cc = new CompteCourant();
+				Compte ce = new CompteEpargne();
 				isc.suppressionCompte(cc);
 				isc.suppressionCompte(ce);
 				jTidCpt.setText("");
@@ -321,13 +321,13 @@ public class FenetreSwing extends JFrame{
 				cp.setPrenom(jTprenom3.getText());
 				cp.setAdresse(jTadresse3.getText());
 				cp.setVille(jTville3.getText());
-				cp.setCodePostal(Integer.parseInt(jTcodePostal3.getText()));
+				cp.setCodePostal(jTcodePostal3.getText());
 				cp.setTelephone(Integer.parseInt(jTtelephone3.getText()));
 				ce.setNom(jTnom3.getText());
 				ce.setPrenom(jTprenom3.getText());
 				ce.setAdresse(jTadresse3.getText());
 				ce.setVille(jTville3.getText());
-				ce.setCodePostal(Integer.parseInt(jTcodePostal3.getText()));
+				ce.setCodePostal(jTcodePostal3.getText());
 				ce.setTelephone(Integer.parseInt(jTtelephone3.getText()));
 				isc.creationClient(cp);
 				isc.creationClient(ce);
