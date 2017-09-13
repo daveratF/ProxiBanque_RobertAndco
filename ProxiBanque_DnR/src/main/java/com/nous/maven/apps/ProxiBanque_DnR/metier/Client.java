@@ -19,7 +19,7 @@ public abstract class Client {
 	private int telephone;
 	private EmployeConseiller sonConseiller;
 	private List<Compte> sesComptes = new ArrayList<Compte>();
-	private int plafond;
+	private double plafond;
 	//getters and setters
 	
 	public String getNom() {
@@ -76,10 +76,10 @@ public abstract class Client {
 	public void setTelephone(int telephone) {
 		this.telephone = telephone;
 	}
-	public int getPlafond() {
+	public double getPlafond() {
 		return plafond;
 	}
-	public void setPlafond(int plafond) {
+	public void setPlafond(double plafond) {
 		this.plafond = plafond;
 	}
 	public Client() {
