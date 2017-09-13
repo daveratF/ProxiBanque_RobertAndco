@@ -20,20 +20,12 @@ public interface IserviceGerant extends IserviceConseiller{
 	public void seConnecter(String login, String mdp);
 	//Conseiller
 		public void creationConseiller(EmployeConseiller ec);
-		public List<Compte> lectureCompte();
-		public List<Client> lectureClient();
 		public void suppressionConseiller(int idConseiller);
 		public List<EmployeConseiller> lectureConseiller();
 		public void modifierConseiller(EmployeConseiller ec);
 		public void attributionEmploye(Agence a, Employe e);
 		public void attributionConseiller(EmployeGerant eg, EmployeConseiller ec);
-		public void attributionClient(Employe e, Client c);
-		public void attributionCompte(Client c, Compte cpt);
-		public void attributionCarte(Compte cpt, Carte cte);
 		public List<Employe> lesEmployes(int idEmploye);
 		public List<EmployeConseiller> sesConseillers(int idConseiller);
-		public List<Client> sesClients(int idClient);
-		public List<Compte> sesComtpes(int idComtpe);
-		public List<Carte> sesCartes(int idCarte);
 
 }
