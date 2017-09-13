@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 13 Septembre 2017 à 14:12
+-- Généré le :  Mer 13 Septembre 2017 à 14:50
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -34,6 +34,15 @@ CREATE TABLE IF NOT EXISTS `agence` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
+-- Contenu de la table `agence`
+--
+
+INSERT INTO `agence` (`idAgence`, `numAgence`, `dateCreation`) VALUES
+(1, '98GT546FV3', '2017-09-13');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `carte`
 --
 
@@ -46,6 +55,8 @@ CREATE TABLE IF NOT EXISTS `carte` (
   KEY `fk_compte_idCompte` (`compte_Id`),
   KEY `fk_carte_premier` (`idPremier`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
 -- Structure de la table `client`
@@ -60,12 +71,14 @@ CREATE TABLE IF NOT EXISTS `client` (
   `ville` varchar(32) DEFAULT NULL,
   `codePostal` varchar(32) DEFAULT NULL,
   `plafond` decimal(10,0) DEFAULT NULL,
-  `conseillerClient_Id` int(11) NOT NULL,
+  `conseillerClient_Id` int(11) DEFAULT NULL,
   `idParticulier` int(11) DEFAULT NULL,
   PRIMARY KEY (`idClient`),
   KEY `fk_conseillerClient_idEmploye` (`conseillerClient_Id`),
   KEY `fk_employe_particulier` (`idParticulier`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
 -- Structure de la table `compte`
@@ -77,13 +90,15 @@ CREATE TABLE IF NOT EXISTS `compte` (
   `dateOuverture` date DEFAULT NULL,
   `decouvert` decimal(10,0) DEFAULT NULL,
   `taux` decimal(10,0) DEFAULT NULL,
-  `compteClient_Id` int(11) NOT NULL,
+  `compteClient_Id` int(11) DEFAULT NULL,
   `solde` decimal(10,0) DEFAULT NULL,
   `idEpargne` int(11) DEFAULT NULL,
   PRIMARY KEY (`idCompte`),
   KEY `fk_compteClient_idClient` (`compteClient_Id`),
   KEY `fk_compte_epargne` (`idEpargne`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
 -- Structure de la table `employe`
@@ -96,12 +111,19 @@ CREATE TABLE IF NOT EXISTS `employe` (
   `email` varchar(32) DEFAULT NULL,
   `login` varchar(32) DEFAULT NULL,
   `mdp` varchar(32) DEFAULT NULL,
-  `agenceEmploye_Id` int(11) NOT NULL,
+  `agenceEmploye_Id` int(11) DEFAULT NULL,
   `idGerant` int(11) DEFAULT NULL,
   PRIMARY KEY (`idEmploye`),
   KEY `fk_agenceEmploye_idAgence` (`agenceEmploye_Id`),
   KEY `fk_employe_gerant` (`idGerant`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `employe`
+--
+
+INSERT INTO `employe` (`idEmploye`, `nom`, `prenom`, `email`, `login`, `mdp`, `agenceEmploye_Id`, `idGerant`) VALUES
+(1, 'Robert', 'Desfoins', 'Rob.tuttur64@hotmail.com', 'patate', '1234azer', 1, 1);
 
 --
 -- Contraintes pour les tables exportées
