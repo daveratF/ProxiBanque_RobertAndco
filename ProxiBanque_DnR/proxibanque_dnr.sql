@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 13 Septembre 2017 à 14:46
+-- Généré le :  Mer 13 Septembre 2017 à 14:50
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   `ville` varchar(32) DEFAULT NULL,
   `codePostal` varchar(32) DEFAULT NULL,
   `plafond` decimal(10,0) DEFAULT NULL,
-  `conseillerClient_Id` int(11) NOT NULL,
+  `conseillerClient_Id` int(11) DEFAULT NULL,
   `idParticulier` int(11) DEFAULT NULL,
   PRIMARY KEY (`idClient`),
   KEY `fk_conseillerClient_idEmploye` (`conseillerClient_Id`),
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `compte` (
   `dateOuverture` date DEFAULT NULL,
   `decouvert` decimal(10,0) DEFAULT NULL,
   `taux` decimal(10,0) DEFAULT NULL,
-  `compteClient_Id` int(11) NOT NULL,
+  `compteClient_Id` int(11) DEFAULT NULL,
   `solde` decimal(10,0) DEFAULT NULL,
   `idEpargne` int(11) DEFAULT NULL,
   PRIMARY KEY (`idCompte`),
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `employe` (
   `email` varchar(32) DEFAULT NULL,
   `login` varchar(32) DEFAULT NULL,
   `mdp` varchar(32) DEFAULT NULL,
-  `agenceEmploye_Id` int(11) NOT NULL,
+  `agenceEmploye_Id` int(11) DEFAULT NULL,
   `idGerant` int(11) DEFAULT NULL,
   PRIMARY KEY (`idEmploye`),
   KEY `fk_agenceEmploye_idAgence` (`agenceEmploye_Id`),
