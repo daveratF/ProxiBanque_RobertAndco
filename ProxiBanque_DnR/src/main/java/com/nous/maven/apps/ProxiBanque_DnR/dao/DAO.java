@@ -146,7 +146,7 @@ public class DAO implements Idao{
 	}
 
 	@Override
-	public void suppressionCarte(Carte cte) {
+	public void suppressionCarte(int idCarte) {
 		try {
 			//1 -  charger le pilote
 			Class.forName("com.mysql.jdbc.Driver");
@@ -159,7 +159,7 @@ public class DAO implements Idao{
 			//4 -  préparer et envoyer requete 
 			String requete = "DELETE FROM Carte WHERE idCarte=? "; 
 			PreparedStatement ps = conn.prepareStatement(requete);
-			ps.setInt(1, cte.getIdCarte());
+			ps.setInt(1, idCarte);
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
 			//6 -  libérer les ressources

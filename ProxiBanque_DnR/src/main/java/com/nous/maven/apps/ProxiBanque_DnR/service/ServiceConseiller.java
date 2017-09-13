@@ -54,8 +54,8 @@ public class ServiceConseiller implements IserviceConseiller{
 	}
 
 	@Override
-	public void suppressionCarte(Carte cte) {
-		dao.suppressionCarte(cte);
+	public void suppressionCarte(int idCarte) {
+		dao.suppressionCarte(idCarte);
 	}
 
 	@Override

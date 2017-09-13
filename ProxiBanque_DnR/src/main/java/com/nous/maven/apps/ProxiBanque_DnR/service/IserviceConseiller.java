@@ -25,7 +25,7 @@ public interface IserviceConseiller {
 		public void simulerCredit(Compte cpt);
 		//Compte-carte
 		public void creationCarte(Carte cte);
-		public void suppressionCarte(Carte cte);
+		public void suppressionCarte(int idCarte);
 		//Client
 		public void creationClient(Client c);
 		public void suppressionClient(Client c);

@@ -287,10 +287,7 @@ public class FenetreSwing extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je supprime une carte de la BDD");
-				Carte cp = new CarteVisaPremier();
-				//Carte ce = new CarteVisaElectron();
-				isc.suppressionCarte(cp);
-				//isc.suppressionCarte(ce);
+				isc.suppressionCarte(Integer.parseInt(jTidCte.getText()));
 				jTidCte.setText("");
 			}
 		});
