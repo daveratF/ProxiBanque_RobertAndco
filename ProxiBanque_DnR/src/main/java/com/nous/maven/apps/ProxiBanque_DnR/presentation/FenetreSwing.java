@@ -178,21 +178,21 @@ public class FenetreSwing extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je crée un client dans la BDD");
 				Client cp = new ClientParticulier();
-				Client ce = new ClientEntreprise();
+				//Client ce = new ClientEntreprise();
 				cp.setNom(jTnom.getText());
 				cp.setPrenom(jTprenom.getText());
 				cp.setAdresse(jTadresse.getText());
 				cp.setVille(jTville.getText());
 				cp.setCodePostal(jTcodePostal.getText());
 				cp.setTelephone(Integer.parseInt(jTtelephone.getText()));
-				ce.setNom(jTnom.getText());
-				ce.setPrenom(jTprenom.getText());
-				ce.setAdresse(jTadresse.getText());
-				ce.setVille(jTville.getText());
-				ce.setCodePostal(jTcodePostal.getText());
-				ce.setTelephone(Integer.parseInt(jTtelephone.getText()));
+				//ce.setNom(jTnom.getText());
+				//ce.setPrenom(jTprenom.getText());
+				//ce.setAdresse(jTadresse.getText());
+				//ce.setVille(jTville.getText());
+				//ce.setCodePostal(jTcodePostal.getText());
+				//ce.setTelephone(Integer.parseInt(jTtelephone.getText()));
 				isc.creationClient(cp);
-				isc.creationClient(ce);
+				//isc.creationClient(ce);
 				jTnom.setText("");
 				jTprenom.setText("");
 				jTadresse.setText("");
@@ -214,15 +214,15 @@ public class FenetreSwing extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je crée un compte dans la BDD");
 				Compte cc = new CompteCourant();
-				Compte ce = new CompteEpargne();
+				//Compte ce = new CompteEpargne();
 				cc.setSolde(Integer.parseInt(jTsolde.getText()));
 				cc.setCode(Integer.parseInt(jTcode.getText()));
 				cc.setDateOuverture(jTdateOuverture.getText());
-				ce.setSolde(Integer.parseInt(jTsolde.getText()));
-				ce.setCode(Integer.parseInt(jTcode.getText()));
-				ce.setDateOuverture(jTdateOuverture.getText());
+				//ce.setSolde(Integer.parseInt(jTsolde.getText()));
+				//ce.setCode(Integer.parseInt(jTcode.getText()));
+				//ce.setDateOuverture(jTdateOuverture.getText());
 				isc.creationCompte(cc);
-				isc.creationCompte(ce);
+			//	isc.creationCompte(ce);
 				jTsolde.setText("");
 				jTdateOuverture.setText("");
 			}
