@@ -422,6 +422,7 @@ public class FenetreSwing extends JFrame{
 				c.setLogin(jTlogin2.getText());
 				c.setMdp(jTmdp2.getText());
 				isg.modifierConseiller(c);
+				jTidc2.setText("");
 				jTnomc2.setText("");
 				jTprenomc2.setText("");
 				jTemail2.setText("");
