@@ -10,31 +10,29 @@ import java.util.List;
  */
 public class Agence {
 	//attribut
+	private int idAgence;
 	private String numeroAgence;
 	private List<Employe> employes = new ArrayList<Employe>();
 	private String dateCreation;
 	//getters and setters
 	
-	public String getNumeroIdentification() {
-		return numeroAgence;
-	}
-
-	public void setNumeroIdentification(String numeroIdentification) {
-		this.numeroAgence = numeroIdentification;
-	}
 	
 	public List<Employe> getEmployes() {
 		return employes;
+	}
+
+	public int getIdAgence() {
+		return idAgence;
+	}
+
+	public void setIdAgence(int idAgence) {
+		this.idAgence = idAgence;
 	}
 
 	public void setEmployes(List<Employe> employes) {
 		this.employes = employes;
 	}
 	
-	public Agence(String numeroAgence) {
-		super();
-		this.numeroAgence = numeroAgence;
-	}
 
 	public String getNumeroAgence() {
 		return numeroAgence;
@@ -54,7 +52,8 @@ public class Agence {
 
 	@Override
 	public String toString() {
-		return "Agence [numeroAgence=" + numeroAgence + ", employes=" + employes + ", dateCreation=" + dateCreation
-				+ "]";
+		return "Agence [idAgence=" + idAgence + ", numeroAgence=" + numeroAgence + ", employes=" + employes
+				+ ", dateCreation=" + dateCreation + "]";
 	}
+
 }

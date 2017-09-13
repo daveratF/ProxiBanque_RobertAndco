@@ -1,4 +1,7 @@
 package com.nous.maven.apps.ProxiBanque_DnR.metier;
+
+import java.beans.Transient;
+
 /**
  * La class Employe permet de regrouper les informations relatives aux membres de l'agence, 
  * ainsi que les op�rations entre les diff�rents employ�s.
@@ -13,7 +16,7 @@ public abstract class Employe {
 	private String prenom;
 	private String email;
 	private String login;
-	private String mdp;
+	private transient String mdp;
 	private Agence lAgence;
 	//getters and setters
 	

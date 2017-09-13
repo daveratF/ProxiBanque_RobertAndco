@@ -17,10 +17,7 @@ public class CompteEpargne extends Compte {
 		this.taux = taux;
 	}
 
-	public CompteEpargne(double taux) {
-		super();
-		this.taux = taux;
-	}
+
 
 	@Override
 	public String toString() {

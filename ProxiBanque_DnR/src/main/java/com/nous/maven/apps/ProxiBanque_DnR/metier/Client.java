@@ -15,7 +15,7 @@ public abstract class Client {
 	private String prenom;
 	private String adresse;
 	private String ville;
-	private int codePostal;
+	private String codePostal;
 	private int telephone;
 	private EmployeConseiller sonConseiller;
 	private List<Compte> sesComptes = new ArrayList<Compte>();
@@ -64,10 +64,10 @@ public abstract class Client {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	public int getTelephone() {

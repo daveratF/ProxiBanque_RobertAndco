@@ -3,14 +3,21 @@ package com.nous.maven.apps.ProxiBanque_DnR.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Agence;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Carte;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Client;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.ClientEntreprise;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.ClientParticulier;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Compte;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.CompteCourant;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.CompteEpargne;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.Employe;
+import com.nous.maven.apps.ProxiBanque_DnR.metier.EmployeAuditeur;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.EmployeConseiller;
 import com.nous.maven.apps.ProxiBanque_DnR.metier.EmployeGerant;
 
@@ -183,7 +190,7 @@ public class DAO implements Idao{
 			ps.setString(2, c.getPrenom());
 			ps.setInt(3, c.getTelephone());
 			ps.setString(4, c.getAdresse());
-			ps.setInt(5, c.getCodePostal());
+			ps.setString(5, c.getCodePostal());
 			ps.setString(6, c.getVille());
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
@@ -244,7 +251,7 @@ public class DAO implements Idao{
 			ps.setString(2, c.getPrenom());
 			ps.setInt(3, c.getTelephone());
 			ps.setString(4, c.getAdresse());
-			ps.setInt(5, c.getCodePostal());
+			ps.setString(5, c.getCodePostal());
 			ps.setString(6, c.getVille());
 			ps.executeUpdate();
 			//5 -  récupérer le résultat
@@ -358,38 +365,209 @@ public class DAO implements Idao{
 
 	@Override
 	public void attributionEmploye(Agence a, Employe e) {
-		// TODO Auto-generated method stub
+		
+			try {
+				//1 -  charger le pilote
+				Class.forName("com.mysql.jdbc.Driver");
+				//2 -  adresse de la BDD
+				String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+				String login = "root";
+				String mdp = "";
+				//3 -  se connecter à la BDD
+				Connection conn = DriverManager.getConnection(adresse,login,mdp);
+				//4 -  préparer et envoyer requete 
+				String requete = "UPDATE Employe SET agenceEmploye_Id=? WHERE idEmploye= ?"; 
+				PreparedStatement ps = conn.prepareStatement(requete);
+				ps.setString(1, a.getNumeroAgence());
+				ps.setInt(2, e.getIdEmploye());
+				//5 -  récupérer le résultat
+				//6 -  libérer les ressources
+				ps.close();
+				conn.close();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		
 	}
 
 	@Override
 	public void attributionConseiller(EmployeGerant eg, EmployeConseiller ec) {
-		// TODO Auto-generated method stub
-		
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "UPDATE Employe SET idGerant=? WHERE idEmploye= ?"; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setInt(1, eg.getIdGerant());
+			ps.setInt(2, ec.getIdConseiller() );
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}		
 	}
 
 	@Override
 	public void attributionClient(Employe e, Client c) {
-		// TODO Auto-generated method stub
-		
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "UPDATE Client SET conseillerClient_Id=? WHERE idClient= ?"; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setInt(1, e.getIdEmploye());
+			ps.setInt(2, c.getIdClient());
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}				
 	}
 
 	@Override
 	public void attributionCompte(Client c, Compte cpt) {
-		// TODO Auto-generated method stub
-		
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "UPDATE Compte SET compteClient_Id=? WHERE idCompte= ?"; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setInt(1, c.getIdClient());
+			ps.setInt(2, cpt.getCode());
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}			
 	}
 
 	@Override
 	public void attributionCarte(Compte cpt, Carte cte) {
-		// TODO Auto-generated method stub
-		
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "UPDATE Carte SET compte_Id	=? WHERE idCarte= ?"; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			ps.setInt(1, cpt.getCode());
+			ps.setInt(2, cte.getIdCarte());
+			//5 -  récupérer le résultat
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}			
 	}
 
 	@Override
 	public List<Employe> lesEmployes(int idEmploye) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Employe> lesEmployes =new ArrayList<Employe>();
+		EmployeConseiller ec = new EmployeConseiller();
+		EmployeGerant eg = new EmployeGerant();
+		EmployeAuditeur ea = new EmployeAuditeur();
+		try {
+		//1- charger le pilote
+		Class.forName("com.mysql.jdbc.Driver");
+		//2- adresse de la base de données
+		String adresse="jdbc:mysql://localhost:3306/proxibanque_dnr";
+		String login="root";
+		String mdp="";
+		//3- connecter à la base 
+		Connection conn = DriverManager.getConnection(adresse, login, mdp);
+		//4- préparer en envoyer la requete 
+		String requete="SELECT * \r\n" + 
+				"FROM Agence,Employe \r\n" + 
+				"WHERE Agence.idAgence = Emlploye.agenceEmploye_Id AND idAgence= ? ";
+				//requete SQL
+		PreparedStatement ps= conn.prepareStatement(requete); //prépare la requete
+		ps.setInt(1, idEmploye);
+		//5- récuperer le resultat
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			if(rs.getInt("idEmploye")== rs.getInt("idGerant")) {
+				eg.setIdGerant(rs.getInt("idGerant")); 
+				eg.setNom(rs.getString("nom"));
+				eg.setPrenom(rs.getString("prenom"));
+				lesEmployes.add(eg);
+				int iddeAgence=rs.getInt("agenceEmploye_Id");
+				Agence a = new Agence();
+				a.setIdAgence(iddeAgence);
+				a.setNumeroAgence(rs.getString("numAgence"));
+				a.setDateCreation(rs.getString("dateCreation"));
+				eg.setlAgence(a);
+			}
+			else {
+				ec.setIdConseiller(rs.getInt("idEmploye")); 
+				ec.setNom(rs.getString("nom"));
+				ec.setPrenom(rs.getString("prenom"));
+				lesEmployes.add(ec);
+				int iddeAgence=rs.getInt("agenceEmploye_Id");
+				Agence a = new Agence();
+				a.setIdAgence(iddeAgence);
+				a.setNumeroAgence(rs.getString("numAgence"));
+				a.setDateCreation(rs.getString("dateCreation"));
+				ec.setlAgence(a);
+			}
+		}
+		//6- liberer les ressources
+		ps.close();
+		conn.close();
+		} catch (Exception e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+		}
+		return lesEmployes;
 	}
 
 	@Override
@@ -418,16 +596,128 @@ public class DAO implements Idao{
 
 	@Override
 	public List<Compte> lectureCompte() {
-		return null;
+		List<Compte> lcpt = new ArrayList<Compte>();
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "SELECT * FROM Compte"; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			//5 -  récupérer le résultat
+			ResultSet rs = ps.executeQuery(); 
+			while(rs.next()) {				 
+				CompteCourant cptC = new CompteCourant();
+				CompteEpargne cptE = new CompteEpargne();
+				if(rs.getInt("idCompte")== rs.getInt("idEpargne")){
+					cptE.setCode(rs.getInt("idEpargne"));		
+					cptE.setDateOuverture(rs.getString("dateOuverture"));
+					cptE.setSolde(rs.getDouble("solde"));
+					cptE.setTaux(rs.getDouble("taux"));
+					lcpt.add(cptE);		    
+				} else {
+					cptC.setCode(rs.getInt("idEpargne"));		
+					cptC.setDateOuverture(rs.getString("dateOuverture"));
+					cptC.setSolde(rs.getDouble("solde"));
+					cptC.setDecouvert(rs.getInt("decouvert"));
+					lcpt.add(cptC);
+				}
+			}
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lcpt;
 	}
 
 	@Override
 	public List<Client> lectureClient() {
-		return null;
+		List<Client> lc = new ArrayList<Client>();
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "SELECT * FROM Client"; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			//5 -  récupérer le résultat
+			ResultSet rs = ps.executeQuery(); 
+			while(rs.next()) {				 
+				ClientEntreprise cetp = new ClientEntreprise();	
+				ClientParticulier cpat= new ClientParticulier();	
+				if(rs.getInt("idClient")== rs.getInt("idParticulier")){
+					cpat.setIdParticulier(rs.getInt("idParticulier"));		
+					cpat.setNom(rs.getString("nom"));
+					cpat.setPrenom(rs.getString("prenom"));
+					cpat.setTelephone(rs.getInt("telephone"));
+					cpat.setAdresse(rs.getString("adresse"));
+					cpat.setCodePostal(rs.getString("codePostal"));
+					cpat.setVille(rs.getString("ville"));
+					lc.add(cpat);		    
+				} else {
+					cetp.setIdEntreprise(rs.getInt("idParticulier"));		
+					cetp.setNom(rs.getString("nom"));
+					cetp.setPrenom(rs.getString("prenom"));
+					cetp.setTelephone(rs.getInt("telephone"));
+					cetp.setAdresse(rs.getString("adresse"));
+					cetp.setCodePostal(rs.getString("codePostal"));
+					cetp.setVille(rs.getString("ville"));
+					lc.add(cetp);
+				}
+			}
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lc;
 	}
 
 	@Override
 	public List<EmployeConseiller> lectureConseiller() {
-		return null;
+		List<EmployeConseiller> lec = new ArrayList<EmployeConseiller>();
+		try {
+			//1 -  charger le pilote
+			Class.forName("com.mysql.jdbc.Driver");
+			//2 -  adresse de la BDD
+			String adresse = "jdbc:mysql://localhost:3306/proxibanque_dnr";
+			String login = "root";
+			String mdp = "";
+			//3 -  se connecter à la BDD
+			Connection conn = DriverManager.getConnection(adresse,login,mdp);
+			//4 -  préparer et envoyer requete 
+			String requete = "SELECT * FROM Employe"; 
+			PreparedStatement ps = conn.prepareStatement(requete);
+			//5 -  récupérer le résultat
+			ResultSet rs = ps.executeQuery(); 
+			while(rs.next()) {				 
+				EmployeConseiller ec = new EmployeConseiller();	
+				ec.setIdConseiller(rs.getInt("idEmploye"));		
+				ec.setNom(rs.getString("nom"));
+				ec.setPrenom(rs.getString("prenom"));
+				ec.setEmail(rs.getString("email"));
+				ec.setLogin(rs.getString("login"));
+				lec.add(ec);		    
+			}
+			//6 -  libérer les ressources
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lec;
 	}	
 }

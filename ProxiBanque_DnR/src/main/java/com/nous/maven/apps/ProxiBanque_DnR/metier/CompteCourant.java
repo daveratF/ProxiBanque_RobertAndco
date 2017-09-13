@@ -17,11 +17,6 @@ public class CompteCourant extends Compte {
 		this.decouvert = decouvert;
 	}
 
-	
-	public CompteCourant(int decouvert) {
-		super();
-		this.decouvert = decouvert;
-	}
 
 	@Override
 	public String toString() {
