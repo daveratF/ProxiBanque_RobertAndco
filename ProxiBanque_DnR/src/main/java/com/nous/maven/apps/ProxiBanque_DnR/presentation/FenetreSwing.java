@@ -327,7 +327,7 @@ public class FenetreSwing extends JFrame{
 				//ce.setVille(jTville3.getText());
 				//ce.setCodePostal(jTcodePostal3.getText());
 				//ce.setTelephone(Integer.parseInt(jTtelephone3.getText()));
-				isc.creationClient(cp);
+				isc.modificationClient(cp);
 			//	isc.creationClient(ce);
 				jTidCl3.setText("");
 				jTnom3.setText("");
