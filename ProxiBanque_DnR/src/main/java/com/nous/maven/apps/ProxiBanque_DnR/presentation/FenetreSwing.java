@@ -84,11 +84,11 @@ public class FenetreSwing extends JFrame{
 	private JTextField jTidCl= new JTextField(12);
 	private JButton jBSuppr = new JButton("Supprimer Client");
 	//Supprimer Compte
-	private JLabel jLidCpt = new JLabel("Numéro de Compte");
+	private JLabel jLidCpt = new JLabel("Id Compte");
 	private JTextField jTidCpt= new JTextField(12);
 	private JButton jBSuppr2 = new JButton("Supprimer Compte");
 	//Supprimer Carte
-	private JLabel jLidCte = new JLabel("id Carte");
+	private JLabel jLidCte = new JLabel("Id Carte");
 	private JTextField jTidCte= new JTextField(12);
 	private JButton jBSuppr3 = new JButton("Supprimer Carte");
 	//Modification Client
@@ -169,14 +169,14 @@ public class FenetreSwing extends JFrame{
 		Cl.add(jTnom);
 		Cl.add(jLprenom);
 		Cl.add(jTprenom);
-		Cl.add(jLadresse);
-		Cl.add(jTadresse);
-		Cl.add(jLville);
-		Cl.add(jTville);
-		Cl.add(jLcodePostal);
-		Cl.add(jTcodePostal);
 		Cl.add(jLtelephone);
 		Cl.add(jTtelephone);
+		Cl.add(jLadresse);
+		Cl.add(jTadresse);
+		Cl.add(jLcodePostal);
+		Cl.add(jTcodePostal);
+		Cl.add(jLville);
+		Cl.add(jTville);
 		jBValider.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -185,10 +185,10 @@ public class FenetreSwing extends JFrame{
 				//Client ce = new ClientEntreprise();
 				cp.setNom(jTnom.getText());
 				cp.setPrenom(jTprenom.getText());
+				cp.setTelephone(Integer.parseInt(jTtelephone.getText()));
 				cp.setAdresse(jTadresse.getText());
 				cp.setVille(jTville.getText());
 				cp.setCodePostal(jTcodePostal.getText());
-				cp.setTelephone(Integer.parseInt(jTtelephone.getText()));
 				//ce.setNom(jTnom.getText());
 				//ce.setPrenom(jTprenom.getText());
 				//ce.setAdresse(jTadresse.getText());
@@ -294,33 +294,33 @@ public class FenetreSwing extends JFrame{
 		JTabbedPane Modifier = new JTabbedPane();
 		Modifier.addTab("Client", Cl3);
 			//Modification Client
-		Cl3.add(jLidCl3);
-		Cl3.add(jTidCl3);
 		Cl3.add(jLnom3);
 		Cl3.add(jTnom3);
 		Cl3.add(jLprenom3);
 		Cl3.add(jTprenom3);
-		Cl3.add(jLadresse3);
-		Cl3.add(jTadresse3);
-		Cl3.add(jLville3);
-		Cl3.add(jTville3);
-		Cl3.add(jLcodePostal3);
-		Cl3.add(jTcodePostal3);
 		Cl3.add(jLtelephone3);
 		Cl3.add(jTtelephone3);
+		Cl3.add(jLadresse3);
+		Cl3.add(jTadresse3);
+		Cl3.add(jLcodePostal3);
+		Cl3.add(jTcodePostal3);
+		Cl3.add(jLville3);
+		Cl3.add(jTville3);
+		Cl3.add(jLidCl3);
+		Cl3.add(jTidCl3);
 		jBModif.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je crée un client dans la BDD");
 				Client cp = new ClientParticulier();
 				//Client ce = new ClientEntreprise();
-				cp.setIdClient(Integer.parseInt(jTidCl3.getText()));
 				cp.setNom(jTnom3.getText());
 				cp.setPrenom(jTprenom3.getText());
-				cp.setAdresse(jTadresse3.getText());
-				cp.setVille(jTville3.getText());
-				cp.setCodePostal(jTcodePostal3.getText());
 				cp.setTelephone(Integer.parseInt(jTtelephone3.getText()));
+				cp.setAdresse(jTadresse3.getText());
+				cp.setCodePostal(jTcodePostal3.getText());
+				cp.setVille(jTville3.getText());
+				cp.setIdClient(Integer.parseInt(jTidCl3.getText()));
 				//ce.setNom(jTnom3.getText());
 				//ce.setPrenom(jTprenom3.getText());
 				//ce.setAdresse(jTadresse3.getText());
