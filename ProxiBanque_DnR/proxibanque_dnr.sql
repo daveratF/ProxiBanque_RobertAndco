@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 13 Septembre 2017 à 10:22
+-- Généré le :  Mer 13 Septembre 2017 à 14:12
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `agence` (
   `idAgence` int(11) NOT NULL AUTO_INCREMENT,
-  `numAgence` varchar(32) NOT NULL,
-  `dateCreation` date NOT NULL,
+  `numAgence` varchar(32) DEFAULT NULL,
+  `dateCreation` date DEFAULT NULL,
   PRIMARY KEY (`idAgence`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -48,20 +48,26 @@ INSERT INTO `agence` (`idAgence`, `numAgence`, `dateCreation`) VALUES
 
 CREATE TABLE IF NOT EXISTS `carte` (
   `idCarte` int(11) NOT NULL AUTO_INCREMENT,
-  `numCarte` int(11) NOT NULL,
+  `numCarte` int(11) DEFAULT NULL,
   `compte_Id` int(11) DEFAULT NULL,
   `idPremier` int(11) DEFAULT NULL,
   PRIMARY KEY (`idCarte`),
   KEY `fk_compte_idCompte` (`compte_Id`),
   KEY `fk_carte_premier` (`idPremier`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=463 ;
 
 --
 -- Contenu de la table `carte`
 --
 
 INSERT INTO `carte` (`idCarte`, `numCarte`, `compte_Id`, `idPremier`) VALUES
-(1, 2, 1, 1);
+(1, 2, 1, 1),
+(457, 0, NULL, NULL),
+(458, 0, NULL, NULL),
+(459, 78, NULL, NULL),
+(460, 78, NULL, NULL),
+(461, 77, NULL, NULL),
+(462, 77, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -71,13 +77,13 @@ INSERT INTO `carte` (`idCarte`, `numCarte`, `compte_Id`, `idPremier`) VALUES
 
 CREATE TABLE IF NOT EXISTS `client` (
   `idClient` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(32) NOT NULL,
-  `prenom` varchar(32) NOT NULL,
-  `telephone` int(11) NOT NULL,
-  `adresse` varchar(255) NOT NULL,
-  `ville` varchar(32) NOT NULL,
-  `codePostal` varchar(32) NOT NULL,
-  `plafond` decimal(10,0) NOT NULL,
+  `nom` varchar(32) DEFAULT NULL,
+  `prenom` varchar(32) DEFAULT NULL,
+  `telephone` int(11) DEFAULT NULL,
+  `adresse` varchar(255) DEFAULT NULL,
+  `ville` varchar(32) DEFAULT NULL,
+  `codePostal` varchar(32) DEFAULT NULL,
+  `plafond` decimal(10,0) DEFAULT NULL,
   `conseillerClient_Id` int(11) NOT NULL,
   `idParticulier` int(11) DEFAULT NULL,
   PRIMARY KEY (`idClient`),
@@ -100,12 +106,12 @@ INSERT INTO `client` (`idClient`, `nom`, `prenom`, `telephone`, `adresse`, `vill
 
 CREATE TABLE IF NOT EXISTS `compte` (
   `idCompte` int(11) NOT NULL AUTO_INCREMENT,
-  `numCompte` varchar(32) NOT NULL,
-  `dateOuverture` date NOT NULL,
-  `decouvert` decimal(10,0) NOT NULL,
-  `taux` decimal(10,0) NOT NULL,
+  `numCompte` varchar(32) DEFAULT NULL,
+  `dateOuverture` date DEFAULT NULL,
+  `decouvert` decimal(10,0) DEFAULT NULL,
+  `taux` decimal(10,0) DEFAULT NULL,
   `compteClient_Id` int(11) NOT NULL,
-  `solde` decimal(10,0) NOT NULL,
+  `solde` decimal(10,0) DEFAULT NULL,
   `idEpargne` int(11) DEFAULT NULL,
   PRIMARY KEY (`idCompte`),
   KEY `fk_compteClient_idClient` (`compteClient_Id`),
@@ -127,11 +133,11 @@ INSERT INTO `compte` (`idCompte`, `numCompte`, `dateOuverture`, `decouvert`, `ta
 
 CREATE TABLE IF NOT EXISTS `employe` (
   `idEmploye` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(32) NOT NULL,
-  `prenom` varchar(32) NOT NULL,
-  `email` varchar(32) NOT NULL,
-  `login` varchar(32) NOT NULL,
-  `mdp` varchar(32) NOT NULL,
+  `nom` varchar(32) DEFAULT NULL,
+  `prenom` varchar(32) DEFAULT NULL,
+  `email` varchar(32) DEFAULT NULL,
+  `login` varchar(32) DEFAULT NULL,
+  `mdp` varchar(32) DEFAULT NULL,
   `agenceEmploye_Id` int(11) NOT NULL,
   `idGerant` int(11) DEFAULT NULL,
   PRIMARY KEY (`idEmploye`),
@@ -161,22 +167,22 @@ ALTER TABLE `carte`
 -- Contraintes pour la table `client`
 --
 ALTER TABLE `client`
-  ADD CONSTRAINT `fk_employe_particulier` FOREIGN KEY (`idParticulier`) REFERENCES `client` (`idClient`),
-  ADD CONSTRAINT `fk_conseillerClient_idEmploye` FOREIGN KEY (`conseillerClient_Id`) REFERENCES `employe` (`idEmploye`);
+  ADD CONSTRAINT `fk_conseillerClient_idEmploye` FOREIGN KEY (`conseillerClient_Id`) REFERENCES `employe` (`idEmploye`),
+  ADD CONSTRAINT `fk_employe_particulier` FOREIGN KEY (`idParticulier`) REFERENCES `client` (`idClient`);
 
 --
 -- Contraintes pour la table `compte`
 --
 ALTER TABLE `compte`
-  ADD CONSTRAINT `fk_compte_epargne` FOREIGN KEY (`idEpargne`) REFERENCES `compte` (`idCompte`),
-  ADD CONSTRAINT `fk_compteClient_idClient` FOREIGN KEY (`compteClient_Id`) REFERENCES `client` (`idClient`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_compteClient_idClient` FOREIGN KEY (`compteClient_Id`) REFERENCES `client` (`idClient`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_compte_epargne` FOREIGN KEY (`idEpargne`) REFERENCES `compte` (`idCompte`);
 
 --
 -- Contraintes pour la table `employe`
 --
 ALTER TABLE `employe`
-  ADD CONSTRAINT `fk_employe_gerant` FOREIGN KEY (`idGerant`) REFERENCES `employe` (`idEmploye`),
-  ADD CONSTRAINT `fk_agenceEmploye_idAgence` FOREIGN KEY (`agenceEmploye_Id`) REFERENCES `agence` (`idAgence`);
+  ADD CONSTRAINT `fk_agenceEmploye_idAgence` FOREIGN KEY (`agenceEmploye_Id`) REFERENCES `agence` (`idAgence`),
+  ADD CONSTRAINT `fk_employe_gerant` FOREIGN KEY (`idGerant`) REFERENCES `employe` (`idEmploye`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
