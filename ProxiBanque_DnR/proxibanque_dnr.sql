@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 13 Septembre 2017 à 14:12
+-- Généré le :  Mer 13 Septembre 2017 à 14:33
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `agence` (
 --
 
 INSERT INTO `agence` (`idAgence`, `numAgence`, `dateCreation`) VALUES
-(1, 'zerze', '2017-09-03');
+(1, '98GT546FV3', '2017-09-13');
 
 -- --------------------------------------------------------
 
@@ -55,19 +55,6 @@ CREATE TABLE IF NOT EXISTS `carte` (
   KEY `fk_compte_idCompte` (`compte_Id`),
   KEY `fk_carte_premier` (`idPremier`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=463 ;
-
---
--- Contenu de la table `carte`
---
-
-INSERT INTO `carte` (`idCarte`, `numCarte`, `compte_Id`, `idPremier`) VALUES
-(1, 2, 1, 1),
-(457, 0, NULL, NULL),
-(458, 0, NULL, NULL),
-(459, 78, NULL, NULL),
-(460, 78, NULL, NULL),
-(461, 77, NULL, NULL),
-(462, 77, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -91,13 +78,6 @@ CREATE TABLE IF NOT EXISTS `client` (
   KEY `fk_employe_particulier` (`idParticulier`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
---
--- Contenu de la table `client`
---
-
-INSERT INTO `client` (`idClient`, `nom`, `prenom`, `telephone`, `adresse`, `ville`, `codePostal`, `plafond`, `conseillerClient_Id`, `idParticulier`) VALUES
-(1, 'zert', 'trz', 18, 'ttttt', 'tttt', 'tttt', '96', 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -117,13 +97,6 @@ CREATE TABLE IF NOT EXISTS `compte` (
   KEY `fk_compteClient_idClient` (`compteClient_Id`),
   KEY `fk_compte_epargne` (`idEpargne`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Contenu de la table `compte`
---
-
-INSERT INTO `compte` (`idCompte`, `numCompte`, `dateOuverture`, `decouvert`, `taux`, `compteClient_Id`, `solde`, `idEpargne`) VALUES
-(1, 'kjh,gfd', '2017-09-03', '75', '78', 1, '5555', 1);
 
 -- --------------------------------------------------------
 
@@ -150,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `employe` (
 --
 
 INSERT INTO `employe` (`idEmploye`, `nom`, `prenom`, `email`, `login`, `mdp`, `agenceEmploye_Id`, `idGerant`) VALUES
-(1, 'zer', 'zer', 'zer', 'zer', 'ezr', 1, 1);
+(1, 'Robert', 'Desfoins', 'Rob.tuttur64@hotmail.com', 'patate', '1234azer', 1, 1);
 
 --
 -- Contraintes pour les tables exportées
