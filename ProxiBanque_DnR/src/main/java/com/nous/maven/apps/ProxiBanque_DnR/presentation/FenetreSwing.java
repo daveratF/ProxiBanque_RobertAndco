@@ -133,11 +133,13 @@ public class FenetreSwing extends JFrame{
 		private JTextField jTidCsr = new JTextField(12);
 		private JButton jBSupprc = new JButton("Supprimer Conseiller");
 			//Modifier Conseiller
+		private JLabel jLidc2 = new JLabel("id");
 		private JLabel jLnomc2 = new JLabel("nom");
 		private JLabel jLprenomc2 = new JLabel("prenom");
 		private JLabel jLemail2 = new JLabel("email");
 		private JLabel jLlogin2 = new JLabel("login");
 		private JLabel jLmdp2 = new JLabel("Mot de passe");
+		private JTextField jTidc2 = new JTextField(12);
 		private JTextField jTnomc2 = new JTextField(12);
 		private JTextField jTprenomc2 = new JTextField(12);
 		private JTextField jTemail2 = new JTextField(12);
@@ -396,6 +398,8 @@ public class FenetreSwing extends JFrame{
 		JTabbedPane Modifierc = new JTabbedPane();
 		Modifierc.addTab("Conseiller", Csr3);
 			//Modifier Conseiller
+		Csr3.add(jLidc2);
+		Csr3.add(jTidc2);
 		Csr3.add(jLnomc2);
 		Csr3.add(jTnomc2);
 		Csr3.add(jLprenomc2);
@@ -411,6 +415,7 @@ public class FenetreSwing extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Je modifie un conseiller dans la BDD");
 				EmployeConseiller c = new EmployeConseiller();
+				c.setIdConseiller(Integer.parseInt(jTidc2.getText()));
 				c.setNom(jTnomc2.getText());
 				c.setPrenom(jTprenomc2.getText());
 				c.setEmail(jTemail2.getText());
