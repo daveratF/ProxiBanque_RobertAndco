@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 13 Septembre 2017 à 14:12
+-- Généré le :  Mer 13 Septembre 2017 à 14:46
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -34,6 +34,15 @@ CREATE TABLE IF NOT EXISTS `agence` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
+-- Contenu de la table `agence`
+--
+
+INSERT INTO `agence` (`idAgence`, `numAgence`, `dateCreation`) VALUES
+(1, '98GT546FV3', '2017-09-13');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `carte`
 --
 
@@ -46,6 +55,8 @@ CREATE TABLE IF NOT EXISTS `carte` (
   KEY `fk_compte_idCompte` (`compte_Id`),
   KEY `fk_carte_premier` (`idPremier`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
 -- Structure de la table `client`
@@ -67,6 +78,8 @@ CREATE TABLE IF NOT EXISTS `client` (
   KEY `fk_employe_particulier` (`idParticulier`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
 --
 -- Structure de la table `compte`
 --
@@ -85,6 +98,8 @@ CREATE TABLE IF NOT EXISTS `compte` (
   KEY `fk_compte_epargne` (`idEpargne`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
 --
 -- Structure de la table `employe`
 --
@@ -102,6 +117,13 @@ CREATE TABLE IF NOT EXISTS `employe` (
   KEY `fk_agenceEmploye_idAgence` (`agenceEmploye_Id`),
   KEY `fk_employe_gerant` (`idGerant`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `employe`
+--
+
+INSERT INTO `employe` (`idEmploye`, `nom`, `prenom`, `email`, `login`, `mdp`, `agenceEmploye_Id`, `idGerant`) VALUES
+(1, 'Robert', 'Desfoins', 'Rob.tuttur64@hotmail.com', 'patate', '1234azer', 1, 1);
 
 --
 -- Contraintes pour les tables exportées
